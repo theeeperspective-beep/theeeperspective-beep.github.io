@@ -1,9 +1,0 @@
-content:
-  - label: Blog Posts
-    type: collection
-    path: "*.html"
-    exclude: ["index.html"]
-    fields:
-      - name: body
-        type: rich-text
-        label: Article Content
