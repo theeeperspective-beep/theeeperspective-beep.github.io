@@ -1,0 +1,15 @@
+media:
+  input: ""
+  output: ""
+
+content:
+  - name: "posts"
+    label: "Blog Articles"
+    type: "collection"
+    path: "*.html"
+    exclude:
+      - "index.html"
+    fields:
+      - name: "body"
+        label: "Write or Paste Your Report"
+        type: "rich-text"
