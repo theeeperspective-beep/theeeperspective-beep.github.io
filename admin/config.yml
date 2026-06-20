@@ -1,6 +1,5 @@
 backend:
   name: github
-  repo: theeeperspective-beep/theeeperspective-beep.github.io
   branch: main
 
 media_folder: "assets/uploads"
