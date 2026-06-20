@@ -3,112 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The EE Perspective | Institutional Research & Analysis</title>
+    <title>The EE Perspective | Institutional Publishing Platform</title>
     <style>
         :root {
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --text-main: #334155;
-            --bg-site: #f8fafc;
-            --border: #e2e8f0;
+            --slate-bg: #0f172a;
+            --accent-blue: #2563eb;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.7;
-            color: var(--text-main);
+            line-height: 1.6;
+            color: var(--text-dark);
             margin: 0;
-            background-color: var(--bg-site);
+            background-color: #f8fafc;
         }
         nav {
             background: white;
-            border-bottom: 1px solid var(--border);
-            padding: 15px 30px;
+            border-bottom: 1px solid var(--card-border);
+            padding: 18px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo { font-weight: 700; color: var(--primary); text-decoration: none; font-size: 1.25rem; letter-spacing: -0.5px; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.95rem; font-weight: 500; }
-        header {
+        .platform-title { font-weight: 800; font-size: 1.4rem; color: var(--slate-bg); text-decoration: none; letter-spacing: -0.5px; }
+        .dashboard-btn { background: var(--accent-blue); color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        
+        .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 80px 20px;
+            padding: 100px 20px;
             text-align: center;
         }
-        header h1 { margin: 0; font-size: 2.75rem; font-weight: 800; letter-spacing: -1px; }
-        header p { margin: 15px 0 0 0; opacity: 0.8; font-size: 1.1rem; max-width: 600px; margin-inline: auto; }
-        .main-layout {
-            max-width: 1100px;
-            margin: 50px auto;
+        .hero h1 { margin: 0; font-size: 3rem; font-weight: 800; letter-spacing: -1px; }
+        .hero p { margin: 15px auto 0 auto; opacity: 0.8; font-size: 1.2rem; max-width: 650px; }
+
+        .platform-layout {
+            max-width: 1200px;
+            margin: 60px auto;
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 50px;
             padding: 0 20px;
         }
-        .post-feed h2 { font-size: 1.75rem; color: var(--primary); margin-top: 0; }
-        .article-node {
+        
+        .feed-heading { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 25px; font-weight: 700; }
+        
+        .dynamic-article-card {
             background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 35px;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .meta-tag { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .author-badge { font-size: 0.85rem; color: #64748b; margin-bottom: 20px; display: flex; gap: 10px; }
-        .sidebar-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
-            position: sticky;
-            top: 30px;
-        }
-        .sidebar-card h3 { margin-top: 0; color: var(--primary); font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        .btn-read {
+        .dynamic-article-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+        
+        .tag { display: inline-block; background: #eff6ff; color: var(--accent-blue); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 15px; }
+        .dynamic-article-card h2 { font-size: 1.8rem; margin: 0 0 12px 0; font-weight: 700; }
+        .dynamic-article-card h2 a { color: var(--slate-bg); text-decoration: none; }
+        .author-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
+        
+        .btn-entry {
             display: inline-flex;
-            background: var(--primary);
-            color: white;
-            padding: 10px 22px;
-            border-radius: 6px;
+            align-items: center;
+            color: var(--accent-blue);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.95rem;
             margin-top: 15px;
-            transition: transform 0.2s;
         }
-        .btn-read:hover { background: var(--accent); transform: translateY(-1px); }
+        
+        .sidebar-panel {
+            background: white;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 30px;
+            height: fit-content;
+        }
+        .sidebar-panel h3 { margin-top: 0; font-size: 1.2rem; color: var(--slate-bg); margin-bottom: 15px; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">The EE Perspective</a>
-        <div class="nav-links"><a href="https://app.pagescms.org" target="_blank" style="color: var(--accent);">Writers Dashboard ↗</a></div>
+        <a href="index.html" class="platform-title">The EE Perspective</a>
+        <a href="https://app.pagescms.org" target="_blank" class="dashboard-btn">Open Publishing Portal ↗</a>
     </nav>
 
-    <header>
-        <h1>Institutional Engineering Insights</h1>
-        <p>A collaborative database chronicling generational shifts across electrical, energy, and hardware platforms.</p>
-    </header>
+    <div class="hero">
+        <h1>Institutional Engineering Feed</h1>
+        <p>A centralized publishing framework documenting core hardware research, material boundaries, and dynamic mathematical models.</p>
+    </div>
 
-    <div class="main-layout">
-        <div class="post-feed">
-            <!-- ARTICLE NODE START -->
-            <div class="article-node">
-                <div class="meta-tag">Special Technical Analysis</div>
-                <h2><a href="battery-report.html" style="color:inherit; text-decoration:none;">Beyond the Liquid Horizon: The 2026 Generational Leap in EV Battery Architectures</a></h2>
-                <div class="author-badge"><span>By Principal Research Team</span> • <span>June 2026</span></div>
-                <p>An exhaustive, multi-layered engineering breakdown profiling the microscopic interfacial impedances of solid-state matrices, Room-Temperature Quantum Superabsorption grids, and the economic variables of scaling next-generation infrastructure production lines.</p>
-                <a href="battery-report.html" class="btn-read">Access Document Interface →</a>
+    <div class="platform-layout">
+        <div class="main-feed">
+            <div class="feed-heading">Latest Document Deployments</div>
+            
+            <div class="dynamic-article-card">
+                <span class="tag">Energy Storage System Analysis</span>
+                <h2><a href="battery-report.html">Beyond the Liquid Horizon: The 2026 Generational Leap in EV Battery Architectures</a></h2>
+                <div class="author-meta">Compiled by Research Division • Published June 2026</div>
+                <p>An extensive look mapping thermodynamic limits of liquid chemistries against solid-state configurations and room-temperature quantum microcavity storage setups.</p>
+                <a href="battery-report.html" class="btn-entry">Access Full Node Registry →</a>
             </div>
-            <!-- ARTICLE NODE END -->
+            
         </div>
 
         <div class="sidebar">
-            <div class="sidebar-card">
-                <h3>Platform Mission</h3>
-                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 0;">This open-source engine serves as a central documentation repository tracking bleeding-edge engineering research. Built for fast processing, multi-writer delegation, and high-fidelity scannability.</p>
+            <div class="sidebar-panel">
+                <h3>Platform Specs</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
+                    This publishing engine converts clean structured documentation directly into responsive layouts. Built for multi-writer collaboration, high-velocity indexing, and zero-cost scaling.
+                </p>
             </div>
         </div>
     </div>
