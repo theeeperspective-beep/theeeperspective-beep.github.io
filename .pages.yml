@@ -1,15 +1,15 @@
 media:
-  input: ""
-  output: ""
+  input: "assets"
+  output: "assets"
 
 content:
-  - name: "posts"
-    label: "Blog Articles"
+  - name: "articles"
+    label: "Publish New Report"
     type: "collection"
     path: "*.html"
     exclude:
       - "index.html"
     fields:
       - name: "body"
-        label: "Write or Paste Your Report"
+        label: "Paste Complete Document Text"
         type: "rich-text"
